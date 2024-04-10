@@ -4,7 +4,8 @@
 
 #define BUFFER_SIZE_READ 100
 
-CountRes fgetsCount(char *fileName) {
+// TODO comment
+CountRes fgetsCount(char *fileName, int opts) {
   CountRes res = { 0, 0, 0, 0};
   FILE *file;
 
