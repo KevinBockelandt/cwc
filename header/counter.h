@@ -6,8 +6,6 @@
  * @brief Contain the result of a count execution
  */
 typedef struct CountRes {
-  /// @brief The number of bytes of the file
-  int numBytes;
   /// @brief The number of characters of the file
   int numChars;
   /// @brief The number of words of the file
@@ -18,10 +16,9 @@ typedef struct CountRes {
 
 /**
  * Reproduce the result of the 'wc' command using fgets internally
- * @param fileName Path of the file to process
- * @param opts Options from the command line
+ * @param file Handler for the file to process
  * @returns A struct containg all the counters
  */
-CountRes fgetsCount(char *fileName, int opts);
+CountRes fgetsCount(FILE *file);
 
 #endif

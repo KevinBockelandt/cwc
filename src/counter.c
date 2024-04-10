@@ -4,24 +4,16 @@
 
 #define BUFFER_SIZE_READ 100
 
-// TODO comment
-CountRes fgetsCount(char *fileName, int opts) {
-  CountRes res = { 0, 0, 0, 0};
-  FILE *file;
+/**
+ * @brief Process a file to extract infos needed by the command
+ * @param file Handler to the file to process
+ */
+CountRes fgetsCount(FILE *file) {
+  CountRes res = { 0, 0, 0 };
 
   // buffer to store what's read in the file
   // TODO how to choose the best value here?
   char line[BUFFER_SIZE_READ];
-
-  // important to open in "rb" otherwise the number of character for newline
-  // may be wrong
-  file = fopen(fileName, "rb");
-
-  // Check if the file was opened successfully
-  if (file == NULL) {
-    perror("Error opening file");
-    return res;
-  }
 
   // 1 if the next "regular" character we find increases the word counter
   int isWaitingForNewWord = 1;
@@ -55,6 +47,5 @@ CountRes fgetsCount(char *fileName, int opts) {
     }
   }
 
-  fclose(file);
   return res;
 }
